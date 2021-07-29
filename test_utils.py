@@ -8,3 +8,4 @@ class TestUtils(TestCase):
 
     def test_round_up_to_nearest_five_cents(self):
         self.assertAlmostEqual(5.05, round_up_to_nearest_five_cents(5.01))
+
