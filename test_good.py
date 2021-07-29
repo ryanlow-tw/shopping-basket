@@ -8,7 +8,7 @@ class TestGood(TestCase):
         with self.assertRaises(ValueError) as ve:
             Good("perfume", 34.34)
 
-        self.assertEquals(str(ve.exception), "Good class cannot be instantiated!")
+        self.assertEqual(str(ve.exception), "Good class cannot be instantiated!")
 
 
 class TestTaxableGood(TestCase):
@@ -20,7 +20,7 @@ class TestTaxableGood(TestCase):
     def test_good_has_essential_attributes(self):
         self.assertIsNotNone(self.good)
 
-        self.assertEquals(self.good, TaxableGood("perfume", 34.34))
+        self.assertEqual(self.good, TaxableGood("perfume", 34.34))
 
 
 class TestNonTaxableGood(TestCase):
@@ -32,4 +32,4 @@ class TestNonTaxableGood(TestCase):
     def test_good_has_essential_attributes(self):
         self.assertIsNotNone(self.good)
 
-        self.assertEquals(self.good, NonTaxableGood("book", 34.34))
+        self.assertEqual(self.good, NonTaxableGood("book", 34.34))

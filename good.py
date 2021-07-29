@@ -1,4 +1,5 @@
-from abc import ABC
+from abc import ABC, abstractmethod
+from utils import round_up_to_nearest_five_cents
 
 
 class Good(ABC):
@@ -13,6 +14,7 @@ class Good(ABC):
 
     def __eq__(self, other):
         return other.name == self.name and other.price == self.price
+    
 
 
 class TaxableGood(Good):
@@ -23,6 +25,10 @@ class TaxableGood(Good):
     def __eq__(self, other):
         return super(TaxableGood, self).__eq__(other)
 
+    def calculate_tax(self):
+        tax_rate = 0.1
+        return round_up_to_nearest_five_cents(tax_rate * self.price)
+
 
 class NonTaxableGood(Good):
 
@@ -31,3 +37,6 @@ class NonTaxableGood(Good):
 
     def __eq__(self, other):
         return super(NonTaxableGood, self).__eq__(other)
+
+    def calculate_tax(self):
+        return 0
