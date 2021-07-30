@@ -6,9 +6,9 @@ from good import Good, TaxableGood, NonTaxableGood
 class TestGood(TestCase):
 
     def test_that_good_cannot_be_instantiated(self):
-        with self.assertRaises(ValueError) as ve:
+        with self.assertRaises(TypeError) as ve:
             Good("perfume", 34.34, False)
-        self.assertEqual(str(ve.exception), "Good class cannot be instantiated!")
+        self.assertIn("Can't instantiate abstract class Good with abstract methods", str(ve.exception))
 
 
 class TestTaxableGood(TestCase):
